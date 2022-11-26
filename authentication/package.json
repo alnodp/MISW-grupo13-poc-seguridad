@@ -1,6 +1,6 @@
 {
   "name": "authentication",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "",
   "author": "",
   "private": true,
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^9.0.0",
     "@nestjs/passport": "^9.0.0",

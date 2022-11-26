@@ -11,8 +11,12 @@ provider:
   region: us-east-1
 
 functions:
-  api:
+  authentication:
     handler: dist/lambda.handler
+    name: ${sls:stage}-authorizer-lbda
+    description: Componente autenticador
+    memorySize: 128
+    timeout: 20
     events:
       - http:
           method: any

@@ -20,6 +20,13 @@ export class AppController {
     return message;
   }
 
+  @Get(['env'])
+  env(): object {
+    const env = this.appService.getEnv();
+    this.logger.log(env);
+    return env;
+  }
+
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
@@ -34,7 +41,7 @@ export class AppController {
     this.logger.log('login/validate ', req);
     this.logger.log('Token ', true);
     return {
-      'access-token': headers.authorization,
+      'access-token': headers.authorization.replace('Bearer ', ''),
       valid: true,
     };
   }
