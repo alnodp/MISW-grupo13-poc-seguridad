@@ -12,7 +12,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({
       envFilePath: process.env.NODE_ENV
         ? `environments/.${process.env.NODE_ENV}.env`
-        : 'environments/.development.env',
+        : 'environments/.dev.env',
     }),
   ],
   controllers: [AppController],

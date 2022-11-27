@@ -1,7 +1,5 @@
 service: authentication-api
-
 frameworkVersion: '3'
-
 plugins:
   - serverless-jetpack
 
@@ -12,9 +10,9 @@ provider:
 
 functions:
   authentication:
-    handler: dist/lambda.handler
     name: ${sls:stage}-authorizer-lbda
     description: Componente autenticador
+    handler: dist/lambda.handler
     memorySize: 128
     timeout: 20
     events:

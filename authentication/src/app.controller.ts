@@ -1,4 +1,4 @@
-import { Controller, Get, Request, Post, UseGuards, Logger, Headers } from '@nestjs/common';
+import { Controller, Get, Request, Post, UseGuards, Logger, Headers, HttpCode } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
@@ -15,16 +15,11 @@ export class AppController {
 
   @Get(['', 'health'])
   health(): string {
+    const env = this.appService.getEnv();
+    this.logger.log(env);
     const message = 'Service healthy';
     this.logger.log(message);
     return message;
-  }
-
-  @Get(['env'])
-  env(): object {
-    const env = this.appService.getEnv();
-    this.logger.log(env);
-    return env;
   }
 
   @UseGuards(LocalAuthGuard)
@@ -35,15 +30,18 @@ export class AppController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @HttpCode(200)
   @Post('auth/login/validate')
-  getProfile(@Request() req, @Headers() headers) {
+  validToken(@Request() req, @Headers() headers) {
     this.logger.log('login/validate headers ', headers);
-    this.logger.log('login/validate ', req);
-    this.logger.log('Token ', true);
-    return {
-      'access-token': headers.authorization.replace('Bearer ', ''),
-      valid: true,
+    const response = {
+      'access-token': headers.authorization ? headers.authorization.replace('Bearer ', '') : '',
+      valid: !!headers.authorization,
     };
+
+    this.logger.log('Token response', response);
+
+    return response;
   }
 
 }

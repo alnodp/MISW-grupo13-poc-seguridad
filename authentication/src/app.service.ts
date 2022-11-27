@@ -4,8 +4,8 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   getEnv(): object {
     return {
-      NODE_ENV: process.env.NODE_ENV,
-      JWT_TOKEN_EXP: process.env.JWT_TOKEN_EXP,
+      NODE_ENV: process.env.NODE_ENV || 'dev',
+      JWT_TOKEN_EXP: process.env.JWT_TOKEN_EXP || '90s',
     };
   }
 }

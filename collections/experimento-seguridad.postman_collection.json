@@ -10,6 +10,103 @@
 			"name": "Authenticator",
 			"item": [
 				{
+					"name": "Healthy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_AUTH_AWS}}/health",
+							"host": [
+								"{{URL_AUTH_AWS}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_AWS}}/health",
+									"host": [
+										"{{URL_AWS}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Nov 2022 23:19:48 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "1a57f91c-56cb-4c40-a573-71b6ebef2439"
+								},
+								{
+									"key": "x-amzn-Remapped-content-length",
+									"value": "15"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cO3KmFNRIAMFX_A="
+								},
+								{
+									"key": "etag",
+									"value": "W/\"f-KWRyc1i/4fT/xc1AR2auWX32rag\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-63829f10-559d71ef533f446823b375c3;Sampled=0"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 11937561e31bed8643821214f9ac248c.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "BOG50-P2"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "lj380zDBkvdJIYeInPgPGGdJHDB4TGUMoj5RbEBg3ox0o1tVuU2NHA=="
+								}
+							],
+							"cookie": [],
+							"body": "Service healthy"
+						}
+					]
+				},
+				{
 					"name": "Login",
 					"request": {
 						"method": "POST",
@@ -24,9 +121,9 @@
 							"raw": "{\"username\": \"john\", \"password\": \"changeme\"}"
 						},
 						"url": {
-							"raw": "{{URL_AWS}}/auth/login",
+							"raw": "{{URL_AUTH_AWS}}/auth/login",
 							"host": [
-								"{{URL_AWS}}"
+								"{{URL_AUTH_AWS}}"
 							],
 							"path": [
 								"auth",
@@ -223,7 +320,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJzdWIiOjEsImlhdCI6MTY2OTUwNjM4MiwiZXhwIjoxNjY5NTA2NDQyfQ.YN6TANft67qQUfHSJM49BzPwv9bvXMXikdyN9Akw2j8",
+									"value": "{{ACCESS_TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -231,9 +328,9 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{URL_AWS}}/auth/login/validate",
+							"raw": "{{URL_AUTH_AWS}}/auth/login/validate",
 							"host": [
-								"{{URL_AWS}}"
+								"{{URL_AUTH_AWS}}"
 							],
 							"path": [
 								"auth",
@@ -350,16 +447,21 @@
 							"body": "{\n    \"access-token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJzdWIiOjEsImlhdCI6MTY2OTUwNjM4MiwiZXhwIjoxNjY5NTA2NDQyfQ.YN6TANft67qQUfHSJM49BzPwv9bvXMXikdyN9Akw2j8\",\n    \"valid\": true\n}"
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"name": "Diagnostic",
+			"item": [
 				{
 					"name": "Healthy",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL_AWS}}/health",
+							"raw": "{{URL_DIAGNOSTIC_AWS}}/health",
 							"host": [
-								"{{URL_AWS}}"
+								"{{URL_DIAGNOSTIC_AWS}}"
 							],
 							"path": [
 								"health"
@@ -373,9 +475,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{URL_AWS}}/health",
+									"raw": "{{URL_DIAGNOSTIC_AWS}}/health",
 									"host": [
-										"{{URL_AWS}}"
+										"{{URL_DIAGNOSTIC_AWS}}"
 									],
 									"path": [
 										"health"
@@ -400,11 +502,11 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 26 Nov 2022 23:19:48 GMT"
+									"value": "Sun, 27 Nov 2022 07:20:19 GMT"
 								},
 								{
 									"key": "x-amzn-RequestId",
-									"value": "1a57f91c-56cb-4c40-a573-71b6ebef2439"
+									"value": "f0458281-ce36-473a-be97-d13a0557cf17"
 								},
 								{
 									"key": "x-amzn-Remapped-content-length",
@@ -412,7 +514,7 @@
 								},
 								{
 									"key": "x-amz-apigw-id",
-									"value": "cO3KmFNRIAMFX_A="
+									"value": "cP9kGEhToAMFa9Q="
 								},
 								{
 									"key": "etag",
@@ -424,7 +526,7 @@
 								},
 								{
 									"key": "X-Amzn-Trace-Id",
-									"value": "Root=1-63829f10-559d71ef533f446823b375c3;Sampled=0"
+									"value": "Root=1-63830fb3-5e6b31c35b9aa7d4795fbf9f;Sampled=0"
 								},
 								{
 									"key": "X-Cache",
@@ -432,7 +534,7 @@
 								},
 								{
 									"key": "Via",
-									"value": "1.1 11937561e31bed8643821214f9ac248c.cloudfront.net (CloudFront)"
+									"value": "1.1 17958ab807b2df3164d1d4004473bdc6.cloudfront.net (CloudFront)"
 								},
 								{
 									"key": "X-Amz-Cf-Pop",
@@ -440,11 +542,197 @@
 								},
 								{
 									"key": "X-Amz-Cf-Id",
-									"value": "lj380zDBkvdJIYeInPgPGGdJHDB4TGUMoj5RbEBg3ox0o1tVuU2NHA=="
+									"value": "OsFxrW2SCC_otN9ULIy7hoCPKys6I_kDJSjmxhwY8aZpeR_fpJivlA=="
 								}
 							],
 							"cookie": [],
 							"body": "Service healthy"
+						}
+					]
+				},
+				{
+					"name": "Diagnostic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL_DIAGNOSTIC_AWS}}/diagnostic",
+							"host": [
+								"{{URL_DIAGNOSTIC_AWS}}"
+							],
+							"path": [
+								"diagnostic"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL_DIAGNOSTIC_AWS}}/diagnostic",
+									"host": [
+										"{{URL_DIAGNOSTIC_AWS}}"
+									],
+									"path": [
+										"diagnostic"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Nov 2022 07:19:27 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "94481c1f-173a-485e-9cf5-f45ff0860f06"
+								},
+								{
+									"key": "x-amzn-Remapped-content-length",
+									"value": "44"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cP9bHG6soAMFeiQ="
+								},
+								{
+									"key": "etag",
+									"value": "W/\"2c-kKPo+l3iIq+eoy6u5coPu7OpHZo\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-63830f7a-5ea9abae1b3afee61511c12a;Sampled=0"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Error from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 17958ab807b2df3164d1d4004473bdc6.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "BOG50-P2"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "3aQ36OF0cUSEI2MWU37w-YuNHBTrrWkJFHRluGauy1XRZLrq2jjEAQ=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Invalid token\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL_DIAGNOSTIC_AWS}}/diagnostic",
+									"host": [
+										"{{URL_DIAGNOSTIC_AWS}}"
+									],
+									"path": [
+										"diagnostic"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Nov 2022 07:20:03 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "9930e5c9-4682-4d65-991a-f3f1ca15b997"
+								},
+								{
+									"key": "x-amzn-Remapped-content-length",
+									"value": "46"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cP9hmGCVoAMFojw="
+								},
+								{
+									"key": "etag",
+									"value": "W/\"2e-mWZEP6Sbme+DEQYHjmUWYZpeEMM\""
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-63830fa3-111c989c3aa9375541ef73c0;Sampled=0"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 17958ab807b2df3164d1d4004473bdc6.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "BOG50-P2"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "w7Z5avevsSNo3fbinIb6HVn6227M1oYp5sbDK7iGdS-9JbODSiZF3Q=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Diagnostico realizado con éxito\"\n}"
 						}
 					]
 				}
@@ -473,13 +761,28 @@
 	],
 	"variable": [
 		{
-			"key": "URL_LOCAL",
+			"key": "URL_AUTH_LOCAL",
 			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
-			"key": "URL_AWS",
+			"key": "URL_AUTH_AWS",
 			"value": "https://bx59y78jv8.execute-api.us-east-1.amazonaws.com/dev",
+			"type": "string"
+		},
+		{
+			"key": "URL_DIAGNOSTIC_LOCAL",
+			"value": "http://localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "URL_DIAGNOSTIC_AWS",
+			"value": "https://vst40vchs5.execute-api.us-east-1.amazonaws.com/dev",
+			"type": "string"
+		},
+		{
+			"key": "ACCESS_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJzdWIiOjEsImlhdCI6MTY2OTUzMzU5MSwiZXhwIjoxNjY5NTMzNzcxfQ.HGSn-wNJuFSQ8WGLarGzBWHPuXcbfTTV9PEQn2Sz9yk",
 			"type": "string"
 		}
 	]

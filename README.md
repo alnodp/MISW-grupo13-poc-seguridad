@@ -14,7 +14,7 @@ Se espera que el uso de tokens de seguridad valide el 100% de las veces cuando u
 ​​
 
 ### Instalación
-Se requiere [Node.js](https://nodejs.org/) v12+.
+Se requiere [Node.js](https://nodejs.org/) v14.
 Instale las dependencias e inicie el servidor.
 
  - Componente autenticador
@@ -27,11 +27,14 @@ npm run start
  - Componente autorizador
 
 ```sh
-cd authorizer
+cd diagnostic
 npm i
 npm run start
 ```
-
+  
+  
+### Pruebas
+En la carpeta collections se encuentran las colecciones postman para consumir los servicios del componente autenticador y el componente diagnosticos.
 
 ## License
 
