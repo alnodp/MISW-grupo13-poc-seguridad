@@ -1,0 +1,21 @@
+service: diagnostic-api
+frameworkVersion: '3'
+plugins:
+  - serverless-jetpack
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+
+functions:
+  diagnostic:
+    handler: dist/lambda.handler
+    name: ${sls:stage}-diagnostic-lbda
+    description: Componente diagnostio
+    memorySize: 128
+    timeout: 20
+    events:
+      - http:
+          method: any
+          path: /{proxy+}
